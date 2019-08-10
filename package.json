@@ -1,0 +1,23 @@
+{
+  "name": "aim33",
+  "version": "1.0.0",
+  "description": "Aim33 Home Page",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Aimee-MacDonald/aim33.git"
+  },
+  "author": "Aimee MacDonald",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Aimee-MacDonald/aim33/issues"
+  },
+  "homepage": "https://github.com/Aimee-MacDonald/aim33#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "pug": "^2.0.4"
+  }
+}
