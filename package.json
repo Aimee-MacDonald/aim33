@@ -20,7 +20,13 @@
   },
   "homepage": "https://github.com/Aimee-MacDonald/aim33#readme",
   "dependencies": {
+    "body-parser": "^1.19.0",
+    "csurf": "^1.10.0",
+    "dotenv": "^8.0.0",
     "express": "^4.17.1",
+    "express-session": "^1.16.2",
+    "passport": "^0.4.0",
+    "path": "^0.12.7",
     "pug": "^2.0.4"
   }
 }
