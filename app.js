@@ -10,4 +10,8 @@ app.get("/", (req, res) => {
   res.status(200).render("holding");
 });
 
+app.get("/todo", (req, res) => {
+  res.status(200).render("todo");
+})
+
 app.listen(8080);
