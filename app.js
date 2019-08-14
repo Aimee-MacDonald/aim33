@@ -6,6 +6,11 @@ require("dotenv").config();
 const passport = require("passport");
 const session = require("express-session");
 const csurf = require("csurf");
+const mongoose = require("mongoose");
+
+const todo = require(path.join(__dirname, "/dbmodels/todo"));
+
+mongoose.connect(process.env.ADMINDB, {useNewUrlParser: true});
 
 app.set("view engine", "pug");
 app.set("views", path.join(__dirname, "/views"));
@@ -42,7 +47,7 @@ app.get("/", (req, res) => {
 
 app.get("/admin", (req, res) => {
   if(req.isAuthenticated()){
-    res.status(200).render("admin");
+    res.status(200).render("admin", {csrfToken: req.csrfToken()});
   } else {
     res.redirect("/login");
   }
@@ -52,9 +57,17 @@ app.get("/login", (req, res) => {
   res.status(200).render("login", {csrfToken: req.csrfToken()});
 });
 
+app.get("/todos", (req, res) => {
+  todo.find({}, function(err, docs){
+    if(err){
+      throw err;
+    } else {
+      res.status(200).send(docs);
+    }
+  })
+});
+
 app.post("/login", (req, res) => {
-  console.log("pw: " + req.body.pw);
-  console.log("pw: " + process.env.ADMIN);
   if(req.body.pw === process.env.ADMIN){
     req.login(process.env.ADMIN, function(err){
       if(err) throw err;
@@ -63,6 +76,24 @@ app.post("/login", (req, res) => {
   } else {
     console.log("Wrong Password");
   }
+});
+
+app.post("/todo", (req, res) => {
+  var newTodo = new todo({
+    'title': req.body.todo
+  });
+
+  newTodo.save(err => {
+    if(err) throw err;
+    res.redirect("/admin")
+  });
+});
+
+app.post("/tickTodo", (req, res) => {
+  todo.findByIdAndDelete(req.body.id, function(err){
+    if(err) throw err;
+  });
+  res.redirect("/admin");
 });
 
 app.listen(process.env.PORT || 8080);

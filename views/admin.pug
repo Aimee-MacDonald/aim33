@@ -10,9 +10,10 @@ html(lang="en")
   body
     h1 Aim33
     h2 Todo:
-    ul
-      li Create Landing Page
-      li Create 'Saldanha' Subdomain
-      li Create Time Schedule
-      li Design Logo
-      li Design Survey
+    ul(id="todos")
+
+    form(action="/todo", method="post")
+      input(name="todo")
+      input(id="csrf", type="hidden", name="_csrf", value= csrfToken)
+
+    script(src="/scripts/admin.js" charset="utf-8")
