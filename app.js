@@ -96,4 +96,21 @@ app.post("/tickTodo", (req, res) => {
   res.redirect("/admin");
 });
 
+app.get("/index", (req, res) => {
+  if(req.isAuthenticated()){
+    res.status(200).render("index");
+  } else {
+    res.redirect("/login");
+  }
+
+});
+
+app.get("/survey", (req, res) => {
+  if(req.isAuthenticated()){
+    res.status(200).render("survey");
+  } else {
+    res.redirect("/login");
+  }
+});
+
 app.listen(process.env.PORT || 8080);
