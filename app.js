@@ -9,6 +9,7 @@ const csurf = require("csurf");
 const mongoose = require("mongoose");
 
 const todo = require(path.join(__dirname, "/dbmodels/todo"));
+const admin = require(path.join(__dirname, "/routes/admin"));
 
 mongoose.connect(process.env.ADMINDB, {useNewUrlParser: true});
 
@@ -33,6 +34,8 @@ app.use(passport.session());
 
 app.use(csurf());
 
+app.use("/admin", admin);
+
 passport.serializeUser(function(uid, done){
   done(null, uid);
 });
@@ -43,74 +46,6 @@ passport.deserializeUser(function(uid, done){
 
 app.get("/", (req, res) => {
   res.status(200).render("holding");
-});
-
-app.get("/admin", (req, res) => {
-  if(req.isAuthenticated()){
-    res.status(200).render("admin", {csrfToken: req.csrfToken()});
-  } else {
-    res.redirect("/login");
-  }
-});
-
-app.get("/login", (req, res) => {
-  res.status(200).render("login", {csrfToken: req.csrfToken()});
-});
-
-app.get("/todos", (req, res) => {
-  todo.find({}, function(err, docs){
-    if(err){
-      throw err;
-    } else {
-      res.status(200).send(docs);
-    }
-  })
-});
-
-app.post("/login", (req, res) => {
-  if(req.body.pw === process.env.ADMIN){
-    req.login(process.env.ADMIN, function(err){
-      if(err) throw err;
-      res.redirect("admin");
-    });
-  } else {
-    console.log("Wrong Password");
-  }
-});
-
-app.post("/todo", (req, res) => {
-  var newTodo = new todo({
-    'title': req.body.todo
-  });
-
-  newTodo.save(err => {
-    if(err) throw err;
-    res.redirect("/admin")
-  });
-});
-
-app.post("/tickTodo", (req, res) => {
-  todo.findByIdAndDelete(req.body.id, function(err){
-    if(err) throw err;
-  });
-  res.redirect("/admin");
-});
-
-app.get("/index", (req, res) => {
-  if(req.isAuthenticated()){
-    res.status(200).render("index");
-  } else {
-    res.redirect("/login");
-  }
-
-});
-
-app.get("/survey", (req, res) => {
-  if(req.isAuthenticated()){
-    res.status(200).render("survey");
-  } else {
-    res.redirect("/login");
-  }
 });
 
 app.listen(process.env.PORT || 8080);

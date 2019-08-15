@@ -3,7 +3,7 @@ getTodos();
 function getTodos(){
   var request = new XMLHttpRequest();
 
-  request.open("GET", "/todos");
+  request.open("GET", "/admin/todos");
 
   request.onload = function(){
     if(request.readyState === 4){
@@ -41,7 +41,7 @@ function tickTodo(id){
 
   var request = new XMLHttpRequest();
 
-  request.open("POST", "/tickTodo");
+  request.open("POST", "/admin/tickTodo");
 
   request.setRequestHeader("CSRF-Token", csrftoken);
   request.setRequestHeader("Content-Type", "application/json");
