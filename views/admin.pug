@@ -12,7 +12,7 @@ html(lang="en")
     h2 Todo:
     ul(id="todos")
 
-    form(action="/todo", method="post")
+    form(action="/admin/todo", method="post")
       input(name="todo")
       input(id="csrf", type="hidden", name="_csrf", value= csrfToken)
 
