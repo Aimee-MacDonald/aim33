@@ -10,7 +10,6 @@ const mongoose = require("mongoose");
 
 const todo = require(path.join(__dirname, "/dbmodels/todo"));
 const admin = require(path.join(__dirname, "/routes/admin"));
-const saldanha = require(path.join(__dirname, "/routes/saldanha"));
 
 mongoose.connect(process.env.ADMINDB, {useNewUrlParser: true});
 
@@ -36,7 +35,6 @@ app.use(passport.session());
 app.use(csurf());
 
 app.use("/admin", admin);
-app.use("/saldanha", saldanha);
 
 passport.serializeUser(function(uid, done){
   done(null, uid);
