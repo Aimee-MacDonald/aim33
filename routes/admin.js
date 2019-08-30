@@ -63,12 +63,4 @@ router.get("/survey", (req, res) => {
   }
 });
 
-router.get("/index", (req, res) => {
-  if(req.isAuthenticated()){
-    res.status(200).render("index");
-  } else {
-    res.redirect("/admin/login");
-  }
-});
-
 module.exports = router;
