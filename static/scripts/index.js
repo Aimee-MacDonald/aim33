@@ -1,3 +1,4 @@
+// Canvas Section
 var el_canvas = document.querySelector("canvas");
 
 var screenWidth = el_canvas.width = window.innerWidth;
@@ -11,9 +12,14 @@ window.onresize = function(e){
 var c = el_canvas.getContext("2d");
 function render(){
   requestAnimationFrame(render);
-  c.fillStyle = "lightblue";
+  c.fillStyle = "#3482f1";
   c.beginPath();
   c.fillRect(0, 0, screenWidth, screenHeight);
 }
 
 render();
+
+// Menu Section
+function menuToggle(){
+  console.log("Menu Toggle");
+}

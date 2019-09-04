@@ -19,27 +19,44 @@ html(lang="en")
     header
       img(src="/images/aimee-logo.svg")
 
+    img(id="menu_button", src="/images/menu.svg", onclick="menuToggle()")
+
     nav
-      a(href="branding") Branding
-      a(href="user_experience") User Experience
-      a(href="artistry") Artistry
-      a(href="programming") Programming
+      a(href="#branding") Branding
+      a(href="#user_experience") User Experience
+      a(href="#artistry") Artistry
+      a(href="#programming") Programming
 
     div(id="pages")
       article(id="branding")
         h1 Branding
+        p This is a Section on Branding, This is a Section on Branding, This is a Section on Branding, This is a Section on Branding, This is a Section on Branding, This is a Section on Branding, This is a Section on Branding, This is a Section on Branding, This is a Section on Branding, This is a Section on Branding, This is a Section on Branding, This is a Section on Branding, This is a Section on Branding, This is a Section on Branding, This is a Section on Branding, This is a Section on Branding
 
       article(id="user_experience")
         h1 User Experience
+        p This is a Section on User Experience, This is a Section on User Experience, This is a Section on User Experience, This is a Section on User Experience, This is a Section on User Experience, This is a Section on User Experience, This is a Section on User Experience, This is a Section on User Experience, This is a Section on User Experience, This is a Section on User Experience, This is a Section on User Experience, This is a Section on User Experience, This is a Section on User Experience, This is a Section on User Experience, This is a Section on User Experience, This is a Section on User Experience
 
       article(id="artistry")
         h1 Artistry
+        p This is a Section on Artistry, This is a Section on Artistry, This is a Section on Artistry, This is a Section on Artistry, This is a Section on Artistry, This is a Section on Artistry, This is a Section on Artistry, This is a Section on Artistry, This is a Section on Artistry, This is a Section on Artistry, This is a Section on Artistry, This is a Section on Artistry, This is a Section on Artistry, This is a Section on Artistry, This is a Section on Artistry, This is a Section on Artistry
 
       article(id="programming")
         h1 Programming
+        p This is a Section on Programming, This is a Section on Programming, This is a Section on Programming, This is a Section on Programming, This is a Section on Programming, This is a Section on Programming, This is a Section on Programming, This is a Section on Programming, This is a Section on Programming, This is a Section on Programming, This is a Section on Programming, This is a Section on Programming, This is a Section on Programming, This is a Section on Programming, This is a Section on Programming, This is a Section on Programming
 
     footer
       form(action="/admin/todo", method="post")
-        input
-        button Send
+        div
+          label(for="name") Name:
+          input(id="name", name="name", placeholder="Your name")
+
+          label(for="email") Email:
+          input(id="email", name="email", placeholder="Your Email Address")
+
+        div
+          label(for="description") Description:
+          textarea(id="description", name="description", placeholder="Tell us about your project")
+
+          button(type="submit") Send
+
     script(src="/scripts/index.js" charset="utf-8")

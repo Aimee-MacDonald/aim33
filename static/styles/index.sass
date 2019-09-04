@@ -1,56 +1,100 @@
 body
   margin: 0
-  overflow-x: hidden
   display: flex
   flex-flow: wrap row
+  justify-content: space-around
 
 canvas
   position: fixed
   z-index: -1
 
 header
-  background-color: red
-  width: 100%
-  height: 7rem
+  width: 70%
+  height: 3rem
+  padding-top: 1rem
   img
     width: 100%
-    height: 70%
-    margin-top: 2rem
+    height: 100%
+
+#menu_button
+  width: 10%
+  max-height: 3rem
+  margin-top: 0.5rem
+  display: none
 
 nav
-  background-color: orange
-  width: 100%
-  height: 90vh
+  background-color: #11111166
   display: flex
-  flex-flow: wrap row
-  justify-content: space-around
+  flex-flow: nowrap column
+  width: 100%
   align-items: center
   a
-    background-color: lime
-    padding: 2rem
-    width: 10rem
+    color: #c698c2
+    background-color: #7ae4b1
+    width: 100%
+    text-shadow: 1px 1px 2px darken(#c698c2, 30)
+    text-align: center
+    text-decoration: none
+    font-weight: bold
+    font-size: 16pt
+    padding: 0.5rem
 
 #pages
+  background-color: #7ae4b1
   width: 100%
-  height: 0
-  display: flex
-  flex-flow: nowrap row
-  justify-content: center
-  h1
-    margin: 0
-
-article
-  background-color: yellow
-  width: 0%
-  height: 0%
-  overflow: hidden
-
-#branding
-  width: 0%
+  max-width: 60rem
+  article
+    padding: 1rem
 
 footer
-  background-color: green
+  background-color: darken(#c698c2, 30)
+  color: #7ae4b1
   width: 100%
-  height: 25rem
-  border-top-right-radius: 50%
-  border-top-left-radius: 50%
+  padding: 1rem
+  form
+    display: flex
+    flex-flow: nowrap column
+    div
+      display: flex
+      flex-flow: nowrap column
+      input
+        margin-top: 0.5rem
+        margin-bottom: 1.5rem
+        padding: 0.5rem
+        border-radius: 0.3rem
+      textarea
+        margin-top: 0.5rem
+        margin-bottom: 1.5rem
+        height: 5rem
+        padding: 0.5rem
+        border-radius: 0.3rem
+      button
+        padding: 1rem
+        border-radius: 0.3rem
+
+@media(min-width: 500px)
+  header
+    width: 50%
+    height: 5rem
+
+  nav
+    background-color: transparent
+    width: 50%
+    flex-flow: nowrap row
+    a
+      background-color: transparent
+
+  #pages
+    display: flex
+    flex-flow: nowrap column
+    align-items: center
+    border-radius: 1rem
+    margin-top: 1rem
+    margin-bottom: 1rem
+
+  footer
+    form
+      flex-flow: nowrap row
+      justify-content: space-around
+      div
+        width: 40%
