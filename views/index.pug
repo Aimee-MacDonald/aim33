@@ -15,15 +15,31 @@ html(lang="en")
 
   body
     canvas
+
     header
+      img(src="/images/aimee-logo.svg")
+
     nav
       a(href="branding") Branding
       a(href="user_experience") User Experience
       a(href="artistry") Artistry
       a(href="programming") Programming
-    article
-    article
-    article
-    article
+
+    div(id="pages")
+      article(id="branding")
+        h1 Branding
+
+      article(id="user_experience")
+        h1 User Experience
+
+      article(id="artistry")
+        h1 Artistry
+
+      article(id="programming")
+        h1 Programming
+
     footer
+      form(action="/admin/todo", method="post")
+        input
+        button Send
     script(src="/scripts/index.js" charset="utf-8")
