@@ -23,3 +23,5 @@ render();
 function menuToggle(){
   console.log("Menu Toggle");
 }
+
+document.querySelector("body").classList = "layout_main";
