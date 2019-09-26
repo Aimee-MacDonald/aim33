@@ -1,15 +1,207 @@
 body
-  background-color: purple
   margin: 0
-  width: 100vw
-  height: 100vh
+
+canvas
+  position: fixed
+  z-index: 0
+
+p
+  margin: 0
+
+#decoration
+  position: fixed
+  z-index: 1
+  width: 100%
+  height: 100%
+  display: flex
+  justify-content: flex-end
+  align-items: flex-end
+  img
+    display: none
+
+#content
+  position: fixed
+  z-index: 2
+  width: 100%
+  height: 100%
+
+#mobile_flourish
+  width: 100%
+  height: auto
+
+#flourish
+  width: auto
+  height: 100%
+
+#top
+  width: 100%
+  height: auto
   display: flex
   justify-content: center
+  margin-top: 2rem
+  img
+    width: 80%
+    height: auto
+
+#bottom
+  width: 100%
+  height: 80%
+  display: flex
+
+#POI
+  color: #7ae4b1
+  font-weight: bold
+  display: flex
+  flex-flow: nowrap column
   align-items: center
 
-img
-  width: 100%
+#CTA
+  color: #4b2a49
+  font-weight: bold
+  display: flex
+  flex-flow: nowrap column
+  align-items: center
+  button
+    color: #7ae4b1
+    background-color: #4b2a49
+    padding: 0.5rem 2rem
+    border: none
+    border-radius: 0.5rem
+    font-weight: bold
+    font-size: 14pt
 
-@media(min-width: 400px)
-  img
-    width: 30%
+@media screen and (orientation: portrait)
+  #decoration
+    #mobile_flourish
+      display: block
+    #flourish
+      display: none
+
+  #bottom
+    flex-flow: nowrap column
+    justify-content: space-between
+    align-items: center
+
+  #POI
+    margin-top: 3rem
+    font-size: 20pt
+
+  #CTA
+    font-size: 20pt
+    margin-bottom: 3rem
+    button
+      color: #7ae4b1
+      background-color: #4b2a49
+
+@media screen and (orientation: portrait) and (min-height: 800px)
+  #POI
+    font-size: 24pt
+    margin-top: 7rem
+
+  #CTA
+    font-size: 24pt
+
+@media screen and (orientation: portrait) and (min-height: 1000px)
+  #decoration
+    height: 120%
+
+  #POI
+    font-size: 36pt
+    margin-top: 5rem
+
+  #CTA
+    font-size: 36pt
+    margin-bottom: 8rem
+
+@media screen and (orientation: portrait) and (min-height: 1300px)
+  #POI
+    font-size: 42pt
+    margin-top: 7rem
+
+  #CTA
+    font-size: 42pt
+    margin-bottom: 10rem
+
+
+@media screen and (orientation: landscape)
+  #decoration
+    #mobile_flourish
+      display: none
+    #flourish
+      display: block
+
+  #top
+    margin-top: 0
+    img
+      width: 60%
+
+  #bottom
+    flex-flow: nowrap row
+    justify-content: space-around
+
+  #POI
+    font-size: 18pt
+    margin-top: 2rem
+
+  #CTA
+    font-size: 18pt
+    margin-top: 6rem
+
+@media screen and (orientation: landscape) and (min-height: 350px)
+  #POI
+    font-size: 20pt
+
+  #CTA
+    font-size: 20pt
+    margin-top: 7rem
+
+@media screen and (orientation: landscape) and (min-height: 400px)
+  #POI
+    font-size: 22pt
+
+  #CTA
+    font-size: 22pt
+    margin-top: 8rem
+
+@media screen and (orientation: landscape) and (min-width: 800px) and (min-height: 350px)
+  #POI
+    font-size: 22pt
+    margin-top: 0rem
+
+  #CTA
+    font-size: 22pt
+    margin-top: 5rem
+    margin-left: 8rem
+
+@media screen and (orientation: landscape) and (min-width: 800px) and (min-height: 400px)
+  #POI
+    font-size: 24pt
+
+  #CTA
+    font-size: 24pt
+    margin-top: 6rem
+
+@media screen and (orientation: landscape) and (min-width: 1000px) and (min-height: 750px)
+  #POI
+    font-size: 30pt
+
+  #CTA
+    font-size: 30pt
+    margin-left: -14rem
+    margin-top: 22rem
+
+@media screen and (orientation: landscape) and (min-width: 1300px)
+  #POI
+    font-size: 38pt
+
+  #CTA
+    font-size: 38pt
+    margin-top: 14rem
+
+@media screen and (orientation: landscape) and (min-width: 1300px) and (min-height: 1000px)
+  #POI
+    font-size: 42pt
+
+  #CTA
+    font-size: 42pt
+    margin-top: 30rem
