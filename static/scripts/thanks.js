@@ -103,18 +103,4 @@ document.onmousemove = function(e){
   nodes[0].y = e.pageY;
 }
 
-var formVisible = false;
-var el_form = document.querySelector("#form_container");
-function toggleForm(){
-  formVisible = !formVisible;
-
-  if(formVisible){
-    el_form.style.width = "100%";
-    el_form.style.height = "100%";
-  } else {
-    el_form.style.width = "0";
-    el_form.style.height = "0";
-  }
-}
-
 update();

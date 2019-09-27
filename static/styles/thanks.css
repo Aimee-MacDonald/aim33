@@ -1,0 +1,1 @@
+body{margin:0;width:100vw;height:100vh}canvas{position:fixed;z-index:0}#content{position:fixed;z-index:1;width:100%;height:100%;display:flex;flex-flow:nowrap column;text-align:center;justify-content:center;align-items:center;color:#7ae4b1}#content h1{font-weight:900;font-size:32pt}#content p{font-weight:bold;font-size:18pt;padding:1rem}

@@ -1,0 +1,23 @@
+doctype html
+html(lang="en")
+  head
+    script(async, src="https://www.googletagmanager.com/gtag/js?id=UA-146678773-1")
+    script.
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-146678773-1');
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    meta(http-equiv="X-UA-Compatible", content="ie=edge")
+    link(rel="stylesheet", href="/styles/thanks.css")
+    title Aim33 - Thank You!
+
+  body
+    canvas
+
+    div(id="content")
+      h1 Thank you!
+      p Thank you for your interest, we will be in touch with you shortly.
+
+  script(src="/scripts/thanks.js" charset="utf-8")

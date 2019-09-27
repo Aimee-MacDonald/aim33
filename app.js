@@ -9,6 +9,7 @@ const csurf = require("csurf");
 const mongoose = require("mongoose");
 
 const todo = require(path.join(__dirname, "/dbmodels/todo"));
+const jobRequest = require(path.join(__dirname, "/dbmodels/jobRequest"));
 const admin = require(path.join(__dirname, "/routes/admin"));
 
 mongoose.connect(process.env.ADMINDB, {useNewUrlParser: true});
@@ -45,11 +46,28 @@ passport.deserializeUser(function(uid, done){
 });
 
 app.get("/", (req, res) => {
-  res.status(200).render("holding");
+  res.status(200).render("holding", {csrfToken: req.csrfToken()});
 });
 
 app.get("/index", (req, res) => {
   res.status(200).render("index");
+});
+
+app.post("/startSite", (req, res) => {
+  var newJobRequest = new jobRequest({
+    'name': req.body.name,
+    'url': req.body.url,
+    'email': req.body.email
+  });
+
+  newJobRequest.save(err => {
+    if(err) throw err;
+    res.redirect("/thanks");
+  });
+});
+
+app.get("/thanks", (req, res) => {
+  res.status(200).render("thanks");
 });
 
 app.listen(process.env.PORT || 8080);

@@ -32,5 +32,14 @@ html(lang="en")
         div(id="CTA")
           p R500 per Month plus
           p 2000 Startup Fee
-          button Start Project
+          button(onclick="toggleForm()") Start Project
+
+    div(id="form_container")
+      button(onclick="toggleForm()") Cancel
+      form(action="/startSite", method="post")
+        input(placeholder="Name", name="name")
+        input(placeholder="Preferred Web Address", name="url")
+        input(placeholder="Email", name="email")
+        input(type="hidden", name="_csrf", value= csrfToken)
+        button(type="submit") Send Request
   script(src="/scripts/holding.js" charset="utf-8")
