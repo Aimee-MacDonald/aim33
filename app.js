@@ -53,6 +53,10 @@ app.get("/index", (req, res) => {
   res.status(200).render("index");
 });
 
+app.post("/checkDomain", (req, res) => {
+  res.status(200).send("Check Domain");
+});
+
 app.get("/thanks", (req, res) => {
   res.status(200).render("thanks");
 });

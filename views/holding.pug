@@ -23,13 +23,14 @@ html(lang="en")
     div(id="content")
       div(id="top")
         img(src="/images/aimee-logo.svg")
+
       div(id="bottom")
-        div(id="POI")
-          p Beautiful Websites
-          p Uniquely hand Crafted
-          p to your
-          p Individual Specification
+        form(id="POI", action="/checkDomain", method="post")
+          input(value= csrfToken, name="_csrf", type="hidden")
+          label(for="checkDomain") Check if your domain is available
+          input(id="checkDomain", placeholder="www.example.com")
+          button(type="submit") Check
         div(id="CTA")
           p R500 per Month plus
-          p 2000 Startup Fee
+          p R2000 Startup Fee
   script(src="/scripts/holding.js" charset="utf-8")
