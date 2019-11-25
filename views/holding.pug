@@ -28,11 +28,11 @@ html(lang="en")
         form(id="POI", action="/checkDomain", method="post")
           input(value= csrfToken, name="_csrf", type="hidden")
           label(for="checkDomain") Check if your domain is available
-          input(id="checkDomain", placeholder="www.example.com")
+          input(id="checkDomain", placeholder="www.example.com", name="domain")
           button(type="submit") Check
 
         div(id="CTA")
           p R500 per Month plus
           p R2000 Startup Fee
-          
+
   script(src="/scripts/holding.js" charset="utf-8")

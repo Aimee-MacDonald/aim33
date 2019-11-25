@@ -9,6 +9,7 @@ const csurf = require("csurf");
 const mongoose = require("mongoose");
 
 const todo = require(path.join(__dirname, "/dbmodels/todo"));
+const DomainCheck = require(path.join(__dirname, "/dbmodels/domainCheck"));
 
 const admin = require(path.join(__dirname, "/routes/admin"));
 
@@ -54,6 +55,26 @@ app.get("/index", (req, res) => {
 });
 
 app.post("/checkDomain", (req, res) => {
+  DomainCheck.find({'domain': req.body.domain}, (err, docs) => {
+    if(err) throw err;
+
+    if(docs.length > 0){
+      docs[0].searchCount++;
+      docs[0].save(err => {
+        if(err) throw err;
+      });
+    } else {
+      var check = new DomainCheck({
+        domain: req.body.domain,
+        searchCount: 1
+      });
+
+      check.save(err => {
+        if(err) throw err;
+      });
+    }
+  });
+
   res.status(200).send("Check Domain");
 });
 
