@@ -1,3 +1,41 @@
+var el_POI = document.getElementById("POI");
+
+el_POI.addEventListener("submit", function(e){
+  e.preventDefault();
+
+  var domain = document.getElementById("checkDomain").value;
+
+  domain = domain.replace(/https:/, '');
+  domain = domain.replace(/http:/, '');
+  domain = domain.replace(/www./, '');
+  if(domain.indexOf(".") !== -1) domain = domain.substring(0, domain.indexOf("."));
+  domain = domain.match(/([a-z])|([0-9])|(-)/g).join("");
+  while(domain[0] === "-") domain = domain.substring(1, domain.length);
+  while(domain[domain.length - 1] === "-") domain = domain.substring(0, domain.length - 1);
+
+  var request = new XMLHttpRequest();
+  request.open("POST", "/checkDomain");
+  request.setRequestHeader("CSRF-Token", document.getElementById("csrf").value);
+  request.setRequestHeader("Content-Type", "application/json");
+  request.withCredentials = true;
+
+  request.onload = function(){
+    if(request.readyState === 4){
+      if(request.status === 200){
+        el_POI.innerHTML = "<h1>" + domain + "</h1>";
+      } else {
+        // Other Response
+      }
+    }
+  }
+
+  request.onerror = function(){
+    // Error
+  }
+
+  request.send(JSON.stringify({'domain': domain}));
+});
+
 var canvas = document.querySelector("canvas");
 
 var screenWidth = canvas.width = window.innerWidth;
