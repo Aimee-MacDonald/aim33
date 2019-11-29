@@ -7,6 +7,7 @@ const passport = require("passport");
 const session = require("express-session");
 const csurf = require("csurf");
 const mongoose = require("mongoose");
+const request = require("request");
 
 const todo = require(path.join(__dirname, "/dbmodels/todo"));
 const DomainCheck = require(path.join(__dirname, "/dbmodels/domainCheck"));
@@ -74,6 +75,22 @@ app.post("/checkDomain", (req, res) => {
       });
     }
   });
+
+  var options = {
+    url: 'https://api.ote-godaddy.com/v1/domains/available?domain=' + req.body.domain + ".com",
+    headers: {
+      'Authorization': 'sso-key ' + process.env.GDAPI + ':' + process.env.GDSECRET
+    }
+  };
+
+  function callback(error, response, body){
+    if(error) throw error;
+
+    console.log("Status: ", response.statusCode);
+    console.log(JSON.parse(response.body));
+  }
+
+  request(options, callback);
 
   res.status(200).send("Check Domain");
 });
