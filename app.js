@@ -77,7 +77,7 @@ app.post("/checkDomain", (req, res) => {
   });
 
   var options = {
-    url: 'https://api.ote-godaddy.com/v1/domains/available?domain=' + req.body.domain + ".com",
+    url: 'https://api.ote-godaddy.com/v1/domains/available?domain=' + req.body.domain,
     headers: {
       'Authorization': 'sso-key ' + process.env.GDAPI + ':' + process.env.GDSECRET
     }
@@ -86,13 +86,22 @@ app.post("/checkDomain", (req, res) => {
   function callback(error, response, body){
     if(error) throw error;
 
-    console.log("Status: ", response.statusCode);
-    console.log(JSON.parse(response.body));
+    if(res.statusCode == 200){
+      var respac = {
+        'domain': req.body.domain,
+        'available': true
+      }
+
+      var b = JSON.parse(body);
+      if(b.available == false){
+        respac.available = false;
+      }
+
+      res.status(200).send(respac);
+    }
   }
 
   request(options, callback);
-
-  res.status(200).send("Check Domain");
 });
 
 app.get("/thanks", (req, res) => {

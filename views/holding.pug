@@ -28,7 +28,12 @@ html(lang="en")
         form(id="POI", action="/checkDomain", method="post")
           input(id="csrf", value= csrfToken, name="_csrf", type="hidden")
           label(for="checkDomain") Check if your domain is available
-          input(id="checkDomain", placeholder="www.example.com", name="domain", required)
+          div(id="searchbox")
+            p https://
+            input(id="checkDomain", placeholder="www.example.com", name="domain", required)
+            select(id="extension")
+              option(value=".com") .com
+              option(value=".co.za") .co.za
           button(type="submit") Check
 
         div(id="CTA")

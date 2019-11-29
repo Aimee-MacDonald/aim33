@@ -72,6 +72,16 @@ p{
   justify-content: space-around;
 }
 
+#searchbox{
+  display: flex;
+  flex-flow: nowrap row;
+  align-items: center;
+}
+
+#searchbox p{
+  font-size: 16pt;
+}
+
 #POI label{
   text-align: center;
 }
@@ -79,17 +89,35 @@ p{
 #POI input{
   text-align: center;
   font-weight: bolder;
+  margin: 0.5rem;
   padding: 0.5rem;
   border-radius: 0.5rem;
+  border: none;
   width: 75%;
-  margin: 1rem;
+}
+
+#POI select{
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  background-color: #7ae4b1;
+  font-weight: bolder;
 }
 
 #POI button{
   font-weight: bolder;
-  padding: 0.5rem;
+  padding: 1rem;
   border-radius: 0.5rem;
+  border: none;
   width: 75%;
+  background-color: #4b2a49;
+  box-shadow: 0 0 1rem 0.5rem #7ae4b1;
+  color: #7ae4b1;
+  margin-top: 2rem;
+}
+
+#POI button:hover{
+  color: #4b2a49;
+  background-color: #7ae4b1;
 }
 
 #CTA{

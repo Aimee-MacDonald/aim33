@@ -13,6 +13,8 @@ el_POI.addEventListener("submit", function(e){
   while(domain[0] === "-") domain = domain.substring(1, domain.length);
   while(domain[domain.length - 1] === "-") domain = domain.substring(0, domain.length - 1);
 
+  domain = domain + document.getElementById('extension').value;
+
   var request = new XMLHttpRequest();
   request.open("POST", "/checkDomain");
   request.setRequestHeader("CSRF-Token", document.getElementById("csrf").value);
@@ -22,7 +24,31 @@ el_POI.addEventListener("submit", function(e){
   request.onload = function(){
     if(request.readyState === 4){
       if(request.status === 200){
-        el_POI.innerHTML = "<h1>" + domain + "</h1>";
+        el_POI.innerText = "";
+
+        var response = JSON.parse(request.responseText);
+        console.log(response);
+        if(response.available){
+          var el_domain = document.createElement("h1");
+          el_domain.innerText = response.domain;
+
+          var el_response = document.createElement("p");
+          el_response.innerText = "is still available!";
+
+          el_POI.append(el_domain);
+          el_POI.append(el_response);
+        } else {
+          var el_domain = document.createElement("h1");
+          el_domain.innerText = response.domain;
+
+          var el_response = document.createElement("p");
+          el_response.innerText = "is not available";
+
+          el_POI.append(el_domain);
+          el_POI.append(el_response);
+        }
+
+
       } else {
         // Other Response
       }
