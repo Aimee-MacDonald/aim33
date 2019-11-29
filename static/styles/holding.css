@@ -80,6 +80,7 @@ p{
 
 #searchbox p{
   font-size: 16pt;
+  font-weight: bolder;
 }
 
 #POI label{
@@ -110,9 +111,11 @@ p{
   border: none;
   width: 75%;
   background-color: #4b2a49;
+  background-color: transparent;
   box-shadow: 0 0 1rem 0.5rem #7ae4b1;
   color: #7ae4b1;
   margin-top: 2rem;
+  text-decoration: underline;
 }
 
 #POI button:hover{
